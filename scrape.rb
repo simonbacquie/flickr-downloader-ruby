@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
 require 'thread'
-require 'pry'
 
 $username = ARGV[0]
 img_urls = Queue.new;
@@ -52,10 +51,7 @@ puts "*** Scanning pages for images..."
 	end
 end
 
-# binding.pry
-
 # on all the images, grab the original quality download location
-
 workers_count = 12
 workers = []
 workers_count.times do |n|

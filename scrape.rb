@@ -3,7 +3,6 @@ require 'open-uri'
 require 'thread'
 require 'pry'
 
-# on each page of the entire set, get the urls for all the images
 $username = ARGV[0]
 img_urls = Queue.new;
 dl_urls = Queue.new;
@@ -22,12 +21,12 @@ def download_img (url)
 	File.open("downloads/#{$username}/" + filename, "wb") do |saved_file|
 		open(url, "rb") do |read_file|
 			saved_file.write(read_file.read)
-			puts "Downloaded #{url}"
 		end
 	end
 end
 
 puts "*** Scanning pages for images..."
+# on each page of the entire set, get the urls for all the images
 
 (1..100).each do |pagenum|
 	was_redirected = false
@@ -57,8 +56,7 @@ end
 
 # on all the images, grab the original quality download location
 
-# run workers
-workers_count = 8
+workers_count = 12
 workers = []
 workers_count.times do |n|
 	workers << Thread.new(n+1) do |my_n|

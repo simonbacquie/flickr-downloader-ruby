@@ -3,8 +3,8 @@ require 'open-uri'
 require 'thread'
 
 $username = ARGV[0]
-img_urls = Queue.new;
-dl_urls = Queue.new;
+img_urls = Queue.new
+dl_urls = Queue.new
 
 if !Dir.exists? "downloads"
 	Dir.mkdir "downloads"
